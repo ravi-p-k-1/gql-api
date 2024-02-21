@@ -3,10 +3,13 @@ import { graphqlHTTP } from 'express-graphql';
 import schema from './schema/Schema.js'
 import { authenticateConnection, sequelize } from './db.js';
 import { dbModels } from './models/index.js';
+import cors from 'cors';
 
 const app = express();
 
 const PORT = 4000;
+
+app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
